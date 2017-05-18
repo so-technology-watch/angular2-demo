@@ -1,0 +1,14 @@
+<div>
+  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary addEditButton-border" (click)="editDriver()"
+    *ngIf="editing">
+    Edit
+  </button>
+  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" (click)="addDriver()" *ngIf="!editing">
+    Add
+  </button>
+  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" (click)="deleteDriver()">
+    Delete
+  </button>
+</div>
+
+<simple-notifications [options]="options"></simple-notifications>

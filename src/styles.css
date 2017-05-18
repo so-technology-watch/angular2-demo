@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+body {
+  background-color: #EEEEEE;
+  min-height: 100vh;
+}
+
+.demo-card-wide.mdl-card {
+  width: 70%;
+  margin: 15px auto 15px;
+}
+
+.demo-card-wide > .mdl-card__title {
+  color: #d9edf7;
+  height: 60px;
+  background-color: #31708f;
+}
+
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+.buttonHolder { 
+    text-align: center;
+}

@@ -1,0 +1,22 @@
+.form-full-width {
+    width: 100%;
+}
+
+.formButton {
+    font-size : 20px; 
+    width: 20%;
+    color: #FFFFFF;
+}
+
+.add-edit-form {
+    margin: auto;
+    width: 70%;
+}
+
+.form-card {
+    width: 50%;
+}
+
+host /deep/ .md-input-placeholder {
+  color: #DF4;
+}

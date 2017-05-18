@@ -1,0 +1,22 @@
+<div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">SO-Angular2-ts</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a routerLink="" class="mdl-navigation__link" href="">Car</a>
+        <a routerLink="driver" class="mdl-navigation__link" href="">Driver</a>
+        <a routerLink="add-edit-form" class="mdl-navigation__link" href="">Edit / New</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,38 @@
+.data-table-format {
+    width: 75%;
+    margin: auto;
+    padding-top: 20px;
+    border-collapse: collapse;
+}
+
+.card-body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+thead {
+    background-color: #8b9dc3;
+    color: white;
+    text-align: center;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+.data-table-format tr.active th {
+  background-color:#dfe3ee !important;
+}
+
+.data-table-format tr.active td {
+  background-color:#dfe3ee !important;
+}
+
+.loadingCenter {
+  margin: 15px auto 0;
+}

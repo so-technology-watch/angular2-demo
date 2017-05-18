@@ -1,0 +1,28 @@
+.not-found-card-wide.mdl-card {
+  width: 512px;
+  margin: 15px auto 0;
+}
+
+.not-found-card-wide > .mdl-card__title {
+  color: #fff;
+  background-color: #31708f;
+  height: 150px;
+}
+
+.not-found-card-wide > .mdl-card__title > h2 {
+    margin: auto;
+    font-weight: bold;
+    font-size: 70px;
+}
+
+.not-found-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+a {
+    font-weight: bold;
+}
+
+.mdl-card__actions {
+    text-align: center;
+}
