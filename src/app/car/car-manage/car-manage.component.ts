@@ -1,3 +1,4 @@
+import { AppNotification } from './../../model/app-notification.model';
 import { TransferCarDataService } from './../services/transferCarData.service';
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
@@ -17,16 +18,7 @@ export class CarManageComponent implements OnInit, OnChanges {
   @Input() listId: string;
   @Input() editing: Boolean;
 
-  // Options for notifications
-  public options = {
-    position: ['bottom', 'left'],
-    timeOut: 5000,
-    lastOnBottom: true,
-    showProgressBar: true,
-    pauseOnHover: true,
-    clickToClose: true,
-    preventDuplicates: true
-  };
+  notif: AppNotification;
 
   constructor(
     private _notificationsService: NotificationsService,
@@ -64,15 +56,24 @@ export class CarManageComponent implements OnInit, OnChanges {
           this.editing = false;
         },
         error => console.log(error));
-      this._notificationsService.success(
-        'Deleted',
-        'The car entry with the id=\'' + this.carToEdit.id + '\' was deleted successfuly'
-      );
+
+        // Setting up the notification to send
+        this.notif = {
+          type: 'success',
+          title: 'Deleted',
+          message: 'The car entry with the id=\'' + this.carToEdit.id + '\' was deleted successfuly'
+        };
+
+        EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
     } else {
-      this._notificationsService.error(
-        'Car not selected',
-        'You have to select a car to delete'
-      );
+        // Setting up the notification to send
+        this.notif = {
+          type: 'error',
+          title: 'Car not selected',
+          message: 'You have to select a car to delete'
+        };
+
+        EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
     }
   }
 }

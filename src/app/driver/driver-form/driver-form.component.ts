@@ -1,23 +1,25 @@
+import { AppNotification } from './../../model/app-notification.model';
 import { TransferDriverDataService } from './../services/transferDriverData.service';
 import { DriverService } from '../services/driver.service';
 import { EmitterService } from './../../services/emitter.service';
 import { Driver } from './../driver.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-driver-form',
   templateUrl: './driver-form.component.html',
   styleUrls: ['./driver-form.component.css']
 })
-export class DriverFormComponent implements OnInit {
+export class DriverFormComponent implements OnInit, OnChanges {
 
   // Regex for model year, only digits and length = 4
   readonly YEAR_REGEX = /^[0-9]{4}$/;
 
   private driverInput: Driver;
   driverForm: FormGroup;
+  notif: AppNotification;
 
   constructor(
     // private _notificationsService: NotificationsService,
@@ -67,25 +69,44 @@ export class DriverFormComponent implements OnInit {
       this.resetForm();
       this.router.navigate(['./driver']);
 
+      // Setting up the notification to send
+      this.notif = {
+        type: 'success',
+        title: 'Success',
+        message: 'Driver added successfuly'
+      };
+
+      EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
+
     } else {
       console.log('Updating old driver');
 
-      this._driverService.Update(<Driver>this.driverForm.getRawValue()).subscribe(
+      this._driverService.Update(Number(this.driverInput.id), <Driver>this.driverForm.getRawValue()).subscribe(
         result => {
           console.log(result);
           EmitterService.get('DRIVER_COMPONENT_LIST').emit(result);
+
+          this.resetForm();
+          this.router.navigate(['./driver']);
+
+          // Setting up the notification to send
+          this.notif = {
+            type: 'success',
+            title: 'Success',
+            message: 'Driver edited successfuly'
+          };
+
+          EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
         },
         error => console.log(error));
-
-      this.resetForm();
-      this.router.navigate(['./driver']);
     }
-   }
+  }
 
   resetForm() {
     this.driverForm.reset();
-    if (this.driverInput) {
+    if (this.driverInput || this._transferDriverData.getDriver()) {
       this.driverInput = undefined;
+      this._transferDriverData.setDriver(this.driverInput);
     }
   }
 }

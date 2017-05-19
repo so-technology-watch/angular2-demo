@@ -43,8 +43,8 @@ export class CarService {
     }
 
     // Function to update a car - API CALL: /
-    public Update = (carToUpdate: Car): Observable<Car> => {
-        return this._http.put(this.actionUrl, JSON.stringify(carToUpdate), { headers: this.headers })
+    public Update = (id: number, carToUpdate: Car): Observable<Car> => {
+        return this._http.put(this.actionUrl + id, JSON.stringify(carToUpdate), { headers: this.headers })
             .catch(this.handleError);
     }
 

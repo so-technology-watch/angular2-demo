@@ -1,3 +1,4 @@
+import { AppNotification } from './../../model/app-notification.model';
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { DriverService } from '../services/driver.service';
 import { Driver } from '../driver.model';
@@ -17,16 +18,7 @@ export class DriverManageComponent implements OnInit {
   @Input() listId: string;
   @Input() editing: Boolean;
 
-  // Options for notifications
-  public options = {
-    position: ['bottom', 'left'],
-    timeOut: 5000,
-    lastOnBottom: true,
-    showProgressBar: true,
-    pauseOnHover: true,
-    clickToClose: true,
-    preventDuplicates: true
-  };
+  notif: AppNotification;
 
   constructor(
     private _notificationsService: NotificationsService,
@@ -64,15 +56,24 @@ export class DriverManageComponent implements OnInit {
           this.editing = false;
         },
         error => console.log(error));
-      this._notificationsService.success(
-        'Deleted',
-        'The driver entry with the id=\'' + this.driverToEdit.id + '\' was deleted successfuly'
-      );
+
+        // Setting up the notification to send
+        this.notif = {
+          type: 'success',
+          title: 'Deleted',
+          message: 'The driver entry with the id=\'' + this.driverToEdit.id + '\' was deleted successfuly'
+        };
+
+        EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
     } else {
-      this._notificationsService.error(
-        'Driver not selected',
-        'You have to select a driver to delete'
-      );
+        // Setting up the notification to send
+        this.notif = {
+          type: 'error',
+          title: 'Driver not selected',
+          message: 'You have to select a driver to delete'
+        };
+
+        EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
     }
   }
 

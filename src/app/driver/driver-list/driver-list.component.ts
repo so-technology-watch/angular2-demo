@@ -34,7 +34,9 @@ export class DriverListComponent implements OnInit {
     }
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.selectedDriver = undefined;
+   }
 
   ngOnChanges(...args: any[]) {
 

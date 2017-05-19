@@ -11,15 +11,19 @@ import { routing } from './app.routing';
 // Directives
 import { MDL } from './directives/MDLDirective.directive';
 
-// Components
+// Car Components
 import { CarComponent } from './car/car.component';
 import { CarListComponent } from './car/car-list/car-list.component';
 import { CarManageComponent } from './car/car-manage/car-manage.component';
 import { CarFormComponent } from './car/car-form/car-form.component';
+
+// Driver Components
 import { DriverComponent } from './driver/driver.component';
 import { DriverListComponent } from './driver/driver-list/driver-list.component';
 import { DriverManageComponent } from './driver/driver-manage/driver-manage.component';
 import { DriverFormComponent } from './driver/driver-form/driver-form.component';
+
+// Other Components
 import { NotFoundComponent } from './not-found/not-found.component';
 
 // Modules

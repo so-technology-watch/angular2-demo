@@ -24,7 +24,7 @@ export class CarComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.getAllCars();
 
-    // Listen to the 'list'emitted event so as populate the model with the event payload
+    // Listen to the 'list' emitted event so as populate the model with the event payload
     EmitterService.get(this.listId).subscribe((data: Car[]) => { this.getAllCars(); });
   }
 

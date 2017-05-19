@@ -42,8 +42,8 @@ export class DriverService {
     }
 
     // Function to update a driver - API CALL: /
-    public Update = (driverToUpdate: Driver): Observable<Driver> => {
-        return this._http.put(this.actionUrl, JSON.stringify(driverToUpdate), { headers: this.headers })
+    public Update = (id: number, driverToUpdate: Driver): Observable<Driver> => {
+        return this._http.put(this.actionUrl + id, JSON.stringify(driverToUpdate), { headers: this.headers })
             .catch(this.handleError);
     }
 

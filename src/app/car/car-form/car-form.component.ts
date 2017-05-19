@@ -1,3 +1,4 @@
+import { AppNotification } from './../../model/app-notification.model';
 import { EmitterService } from './../../services/emitter.service';
 import { Car } from './../car.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -18,6 +19,7 @@ export class CarFormComponent implements OnInit {
 
   private carInput: Car;
   carForm: FormGroup;
+  notif: AppNotification;
 
   constructor(
     // private _notificationsService: NotificationsService,
@@ -63,31 +65,50 @@ export class CarFormComponent implements OnInit {
         result => {
           console.log(result);
           EmitterService.get('CAR_COMPONENT_LIST').emit(result);
+
+          this.resetForm();
+          this.router.navigate(['./']);
+
+          // Setting up the notification to send
+          this.notif = {
+            type: 'success',
+            title: 'Success',
+            message: 'Car added successfuly'
+          };
+
+          EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
         },
         error => console.log(error));
 
-      this.resetForm();
-      this.router.navigate(['./']);
-
     } else {
-      console.log('Updating old car');
+      console.log('Updating old car \n' + JSON.stringify(<Car>this.carForm.getRawValue()));
 
-      this._carService.Update(<Car>this.carForm.getRawValue()).subscribe(
+      this._carService.Update(Number(this.carInput.id), <Car>this.carForm.getRawValue()).subscribe(
         result => {
           console.log(result);
           EmitterService.get('CAR_COMPONENT_LIST').emit(result);
+
+          this.resetForm();
+          this.router.navigate(['./']);
+
+          // Setting up the notification to send
+          this.notif = {
+            type: 'success',
+            title: 'Success',
+            message: 'Car edited successfuly'
+          };
+
+          EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
         },
         error => console.log(error));
-
-      this.resetForm();
-      this.router.navigate(['./']);
     }
-   }
+  }
 
   resetForm() {
     this.carForm.reset();
-    if (this.carInput) {
+    if (this.carInput || this._transferCarData.getCar()) {
       this.carInput = undefined;
+      this._transferCarData.setCar(this.carInput);
     }
   }
 
