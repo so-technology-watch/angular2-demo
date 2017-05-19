@@ -7,6 +7,13 @@ body {
   min-height: 100vh;
 }
 
+.card-body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: rgba(0,0,0,.54);
+    font-size: 1rem;
+}
+
 .demo-card-wide.mdl-card {
   width: 70%;
   margin: 15px auto 15px;
@@ -24,4 +31,8 @@ body {
 
 .buttonHolder { 
     text-align: center;
+}
+
+.buttonHolder button { 
+    font-weight: bold;
 }
