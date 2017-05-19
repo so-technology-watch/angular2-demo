@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { AddEditFormComponent } from './add-edit-form.component';
+import { DriverFormComponent } from './driver-form.component';
 
-describe('AddEditFormComponent', () => {
-  let component: AddEditFormComponent;
-  let fixture: ComponentFixture<AddEditFormComponent>;
+describe('DriverFormComponent', () => {
+  let component: DriverFormComponent;
+  let fixture: ComponentFixture<DriverFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddEditFormComponent ]
+      declarations: [ DriverFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddEditFormComponent);
+    fixture = TestBed.createComponent(DriverFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -19,6 +19,7 @@ import { CarFormComponent } from './car/car-form/car-form.component';
 import { DriverComponent } from './driver/driver.component';
 import { DriverListComponent } from './driver/driver-list/driver-list.component';
 import { DriverManageComponent } from './driver/driver-manage/driver-manage.component';
+import { DriverFormComponent } from './driver/driver-form/driver-form.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 // Modules
@@ -29,9 +30,10 @@ import { MaterialModule } from '@angular/material';
 // Services
 import { Configuration } from './app.configuration';
 import { CarService } from './car/services/car.service';
-import { DriverService } from './driver/driver.service';
+import { DriverService } from './driver/services/driver.service';
 import { EmitterService } from './services/emitter.service';
 import { TransferCarDataService } from './car/services/transferCarData.service';
+import { TransferDriverDataService } from './driver/services/transferDriverData.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { TransferCarDataService } from './car/services/transferCarData.service';
     DriverComponent,
     DriverListComponent,
     DriverManageComponent,
+    DriverFormComponent,
     NotFoundComponent
 ],
   imports: [
@@ -61,7 +64,8 @@ import { TransferCarDataService } from './car/services/transferCarData.service';
     CarService,
     DriverService,
     EmitterService,
-    TransferCarDataService
+    TransferCarDataService,
+    TransferDriverDataService
   ],
   bootstrap: [AppComponent]
 })

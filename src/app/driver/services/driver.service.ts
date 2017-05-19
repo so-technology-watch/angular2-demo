@@ -3,8 +3,8 @@ import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Observable';
-import { Driver } from './driver.model';
-import { Configuration } from '../app.configuration';
+import { Driver } from '../driver.model';
+import { Configuration } from '../../app.configuration';
 
 @Injectable()
 export class DriverService {

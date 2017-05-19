@@ -1,9 +1,10 @@
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
-import { DriverService } from '../driver.service';
+import { DriverService } from '../services/driver.service';
 import { Driver } from '../driver.model';
 import { Router } from '@angular/router';
 import { NotificationsService } from 'angular2-notifications';
 import { EmitterService } from '../../services/emitter.service';
+import { TransferDriverDataService } from './../services/transferDriverData.service';
 
 @Component({
   selector: 'app-driver-manage',
@@ -29,6 +30,7 @@ export class DriverManageComponent implements OnInit {
 
   constructor(
     private _notificationsService: NotificationsService,
+    private _transferDriverData: TransferDriverDataService,
     private _driverService: DriverService,
     private router: Router) { }
 
@@ -44,15 +46,11 @@ export class DriverManageComponent implements OnInit {
     }
   }
 
-  addDriver = (): void => {
-
-  }
-
   editDriver = (): void => {
     if (this.driverToEdit) {
       console.log(JSON.stringify(this.driverToEdit));
-      // this._routerService.setDriver(this.driverToEdit);
-      // this.router.navigate(['./add-edit-form']);
+      this._transferDriverData.setDriver(this.driverToEdit);
+      this.router.navigate(['./driver-form']);
     }
   }
 

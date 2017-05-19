@@ -3,7 +3,7 @@
     *ngIf="editing">
     Edit
   </button>
-  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" (click)="addDriver()" *ngIf="!editing">
+  <button routerLink="../driver-form" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" (click)="addDriver()" *ngIf="!editing">
     Add
   </button>
   <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" (click)="deleteDriver()">

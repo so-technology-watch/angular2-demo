@@ -36,3 +36,22 @@ body {
 .buttonHolder button { 
     font-weight: bold;
 }
+
+.form-full-width {
+    width: 100%;
+}
+
+.formButton {
+    font-size : 20px; 
+    width: 20%;
+    color: #FFFFFF;
+}
+
+.add-edit-form {
+    margin: auto;
+    width: 70%;
+}
+
+.demo-card-wide.form-card {
+    width: 50%;
+}
