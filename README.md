@@ -44,6 +44,8 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 | Creating Car component and list-data component | ![alt text](http://progressed.io/bar/100?title=done)      |
 | Creating manage-component | ![alt text](http://progressed.io/bar/100?title=done)      |
 | Implementing Add/Edit element component | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Architecture schema of the project | ![alt text](http://progressed.io/bar/65?title=progress)      |
-| Implementing Driver API | ![alt text](http://progressed.io/bar/100?title=progress)      |
-| Implementing Car & Driver form | ![alt text](http://progressed.io/bar/10?title=progress)      |
+| Architecture schema of the project | ![alt text](http://progressed.io/bar/65?title=hold)      |
+| Implementing Driver API | ![alt text](http://progressed.io/bar/100?title=done)      |
+| Implementing Car & Driver form | ![alt text](http://progressed.io/bar/100?title=done)      |
+| Implementing centralized notification system | ![alt text](http://progressed.io/bar/10?title=progress)      |
+| Code beautify | ![alt text](http://progressed.io/bar/10?title=progress)      |
