@@ -15,6 +15,7 @@ import { MDL } from './directives/MDLDirective.directive';
 import { CarComponent } from './car/car.component';
 import { CarListComponent } from './car/car-list/car-list.component';
 import { CarManageComponent } from './car/car-manage/car-manage.component';
+import { CarFormComponent } from './car/car-form/car-form.component';
 import { DriverComponent } from './driver/driver.component';
 import { DriverListComponent } from './driver/driver-list/driver-list.component';
 import { DriverManageComponent } from './driver/driver-manage/driver-manage.component';
@@ -27,10 +28,10 @@ import { MaterialModule } from '@angular/material';
 
 // Services
 import { Configuration } from './app.configuration';
-import { CarService } from './car/car.service';
+import { CarService } from './car/services/car.service';
 import { DriverService } from './driver/driver.service';
 import { EmitterService } from './services/emitter.service';
-// import { RouterDataLinkService } from './services/routerDataLink.service';
+import { TransferCarDataService } from './car/services/transferCarData.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { EmitterService } from './services/emitter.service';
     CarComponent,
     CarListComponent,
     CarManageComponent,
+    CarFormComponent,
     DriverComponent,
     DriverListComponent,
     DriverManageComponent,
@@ -59,7 +61,7 @@ import { EmitterService } from './services/emitter.service';
     CarService,
     DriverService,
     EmitterService,
-    // RouterDataLinkService
+    TransferCarDataService
   ],
   bootstrap: [AppComponent]
 })

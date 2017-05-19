@@ -1,6 +1,7 @@
+import { TransferCarDataService } from './../services/transferCarData.service';
 import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { NotificationsService } from 'angular2-notifications';
-import { CarService } from '../car.service';
+import { CarService } from '../services/car.service';
 import { EmitterService } from '../../services/emitter.service';
 import { Router } from '@angular/router';
 import { Car } from '../car.model';
@@ -10,7 +11,7 @@ import { Car } from '../car.model';
   templateUrl: './car-manage.component.html',
   styleUrls: ['./car-manage.component.css']
 })
-export class CarManageComponent implements OnInit {
+export class CarManageComponent implements OnInit, OnChanges {
 
   @Input() carToEdit: Car;
   @Input() listId: string;
@@ -29,6 +30,7 @@ export class CarManageComponent implements OnInit {
 
   constructor(
     private _notificationsService: NotificationsService,
+    private _transferCarData: TransferCarDataService,
     private _carService: CarService,
     private router: Router) { }
 
@@ -44,15 +46,11 @@ export class CarManageComponent implements OnInit {
     }
   }
 
-  addCar = (): void => {
-    // this.router.navigate(['./add-edit-form']);
-  }
-
   editCar = (): void => {
     if (this.carToEdit) {
       console.log(JSON.stringify(this.carToEdit));
-      // this._routerService.setCar(this.carToEdit);
-      // this.router.navigate(['./add-edit-form']);
+      this._transferCarData.setCar(this.carToEdit);
+      this.router.navigate(['./car-form']);
     }
   }
 
@@ -77,5 +75,4 @@ export class CarManageComponent implements OnInit {
       );
     }
   }
-
 }

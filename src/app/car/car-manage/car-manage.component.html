@@ -3,7 +3,7 @@
     *ngIf="editing">
     Edit
   </button>
-  <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" (click)="addCar()" *ngIf="!editing">
+  <button routerLink="car-form" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" *ngIf="!editing">
     Add
   </button>
   <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" (click)="deleteCar()">
