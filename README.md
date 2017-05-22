@@ -1,8 +1,8 @@
-# Angular2Demo
+# Angular4Demo
 
 Client application build in Angular2 that make RESTful calls to the [API server in NodeJS](https://github.com/so-technology-watch/html5-indexeddb-nodejs) by [Romuald TUFFREAU](https://github.com/romwaldtff)
 
-The core of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
+The core of this project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.3.
 
 ## Server
 
@@ -12,9 +12,11 @@ For more info : [Html5 IndexedDB NodeJS](https://github.com/so-technology-watch/
 
 ## Run the Application
 
-1. Install dependencies using `npm install`
+1. Install Angular CLI using the command : `npm install -g @angular/cli`
 
-2. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2. Install dependencies using `npm install`
+
+3. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Build
 
@@ -47,5 +49,5 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 | Architecture schema of the project | ![alt text](http://progressed.io/bar/65?title=hold)      |
 | Implementing Driver API | ![alt text](http://progressed.io/bar/100?title=done)      |
 | Implementing Car & Driver form | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Implementing centralized notification system | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Code beautify | ![alt text](http://progressed.io/bar/20?title=progress)      |
+| Implementaing centralized notification system | ![alt text](http://progressed.io/bar/100?title=done)      |
+| Code beautify | ![alt text](http://progressed.io/bar/100?title=done)      |
