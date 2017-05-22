@@ -6,18 +6,18 @@ import { Driver } from '../driver.model';
   templateUrl: './driver-list.component.html',
   styleUrls: ['./driver-list.component.css']
 })
-export class DriverListComponent implements OnInit {
+export class DriverListComponent implements OnInit, OnChanges {
 
   @Input() listOfDrivers: Driver[];
   @Input() listId: string;
-  isLoading: Boolean = true;
 
+  isLoading: Boolean = true;
   selectedDriver: Driver;
   setDriverToEdit: Function;
   editing: Boolean = false;
 
   constructor() {
-
+    // Function to select the driver to edit from the table
     this.setDriverToEdit = function (index, driver: Driver) {
       if (this.selectedRow !== index) {
         this.selectedRow = index;
@@ -36,10 +36,10 @@ export class DriverListComponent implements OnInit {
 
   ngOnInit() {
     this.selectedDriver = undefined;
-   }
+  }
 
   ngOnChanges(...args: any[]) {
-
+    // if we have a list of driver, set loading to false, otherwise show loading animation
     if (this.listOfDrivers) {
       this.isLoading = false;
     }

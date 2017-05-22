@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../car.model';
 
+// Class to transfer data between Car sibling components
 @Injectable()
 export class TransferCarDataService {
     private carData: Car;

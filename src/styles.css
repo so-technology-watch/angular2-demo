@@ -7,26 +7,72 @@ body {
   min-height: 100vh;
 }
 
-.card-body {
+/* Car and driver list card css */
+.material-card-wide.mdl-card {
+  width: 70%;
+  margin: 15px auto 15px;
+}
+
+.list-card-body {
     padding-top: 20px;
     padding-bottom: 20px;
     color: rgba(0,0,0,.54);
     font-size: 1rem;
 }
 
-.demo-card-wide.mdl-card {
-  width: 70%;
-  margin: 15px auto 15px;
+/* /////////////////////////// */
+
+
+/* Car and driver list table css */
+.data-table-format {
+    width: 75%;
+    margin: auto;
+    border-collapse: collapse;
 }
 
-.demo-card-wide > .mdl-card__title {
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+thead {
+    background-color: #8b9dc3;
+    color: white;
+    text-align: center;
+}
+
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+
+.data-table-format tr.active th {
+  background-color:#dfe3ee !important;
+}
+
+.data-table-format tr.active td {
+  background-color:#dfe3ee !important;
+}
+
+.loadingCenter {
+  margin: 15px auto 0;
+}
+
+/* /////////////////////////// */
+
+
+/* Car and driver form card css */
+.material-card-wide.form-card {
+    width: 50%;
+}
+
+/* /////////////////////////// */
+
+
+/* Common card css */
+.material-card-wide > .mdl-card__title {
   color: #d9edf7;
   height: 60px;
   background-color: #31708f;
-}
-
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
 }
 
 .buttonHolder { 
@@ -37,6 +83,10 @@ body {
     font-weight: bold;
 }
 
+/* /////////////////////////// */
+
+
+/* Form css */
 .form-full-width {
     width: 100%;
 }
@@ -52,6 +102,4 @@ body {
     width: 70%;
 }
 
-.demo-card-wide.form-card {
-    width: 50%;
-}
+/* /////////////////////////// */

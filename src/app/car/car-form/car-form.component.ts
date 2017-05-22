@@ -22,12 +22,12 @@ export class CarFormComponent implements OnInit {
   notif: AppNotification;
 
   constructor(
-    // private _notificationsService: NotificationsService,
     private _carService: CarService,
     private _transferCarData: TransferCarDataService,
     private router: Router,
     private _fb: FormBuilder) {
 
+    // Use carDataTransfer service to get car to edit from carManageComponent
     if (this._transferCarData.getCar()) {
       this.carInput = this._transferCarData.getCar();
     }
@@ -35,6 +35,7 @@ export class CarFormComponent implements OnInit {
 
   ngOnInit() {
     // Form initialize
+    // If we have a car
     if (this.carInput) {
       // Initialize Form with Car details
       this.carForm = this._fb.group({
@@ -45,6 +46,7 @@ export class CarFormComponent implements OnInit {
         driver: [this.carInput.driver, Validators.required]
       });
     } else {
+      // Initialize form with empty values
       this.carForm = this._fb.group({
         id: { value: '', disabled: true },
         maker: ['', Validators.required],
@@ -55,18 +57,22 @@ export class CarFormComponent implements OnInit {
     }
   }
 
-  ngOnChanges(...args: any[]) { }
-
-  save() {
+  save = () => {
     if (!this.carInput) {
+      // If we didn't get a car, call Add function from car service
       console.log('Adding new car');
 
       this._carService.Add(this.carForm.value).subscribe(
         result => {
           console.log(result);
+
+          // Notify car list to refresh
           EmitterService.get('CAR_COMPONENT_LIST').emit(result);
 
+          // reset form values
           this.resetForm();
+
+          // Navigate back to car list
           this.router.navigate(['./']);
 
           // Setting up the notification to send
@@ -76,19 +82,25 @@ export class CarFormComponent implements OnInit {
             message: 'Car added successfuly'
           };
 
+          // Notify app component to show the notification
           EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
         },
         error => console.log(error));
 
-    } else {
+    } else { // Updating the car, call update function from car service
       console.log('Updating old car \n' + JSON.stringify(<Car>this.carForm.getRawValue()));
 
       this._carService.Update(Number(this.carInput.id), <Car>this.carForm.getRawValue()).subscribe(
         result => {
           console.log(result);
+
+          // Notify driver list to refresh
           EmitterService.get('CAR_COMPONENT_LIST').emit(result);
 
+          // reset form values
           this.resetForm();
+
+          // Navigate back to car list
           this.router.navigate(['./']);
 
           // Setting up the notification to send
@@ -98,12 +110,26 @@ export class CarFormComponent implements OnInit {
             message: 'Car edited successfuly'
           };
 
+          // Notify app component to show the notification
           EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
         },
-        error => console.log(error));
+        error => {
+          console.log(error);
+
+          // Setting up the notification to send
+          this.notif = {
+            type: 'error',
+            title: 'Error',
+            message: 'An error occured when trying to reach the server'
+          };
+
+          // Notify app component to show the notification
+          EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
+        });
     }
   }
 
+ // Function to reset form values and carInput data
   resetForm() {
     this.carForm.reset();
     if (this.carInput || this._transferCarData.getCar()) {

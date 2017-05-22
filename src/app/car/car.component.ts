@@ -1,9 +1,6 @@
-import { Observable } from 'rxjs/Observable';
 import { CarService } from './services/car.service';
 import { Car } from './car.model';
-import 'rxjs/add/observable/timer';
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { AnonymousSubscription } from 'rxjs/Subscription';
+import { Component, OnInit } from '@angular/core';
 import { EmitterService } from '../services/emitter.service';
 
 @Component({
@@ -12,26 +9,26 @@ import { EmitterService } from '../services/emitter.service';
   styleUrls: ['./car.component.css'],
   providers: [CarService]
 })
-export class CarComponent implements OnInit, OnChanges {
+export class CarComponent implements OnInit {
 
   private listOfcars: Car[];
 
-  // Event tracking properties
+  // Car list Event tracking ID
   private listId = 'CAR_COMPONENT_LIST';
 
   constructor(private _carService: CarService) { }
 
   ngOnInit() {
+    // On init get all Cars
     this.getAllCars();
 
     // Listen to the 'list' emitted event so as populate the model with the event payload
+    // Refresh car list
     EmitterService.get(this.listId).subscribe((data: Car[]) => { this.getAllCars(); });
   }
 
-  ngOnChanges(changes: any) { }
-
   // Function calling the service carService to get the list of cars
-  getAllCars(): void {
+  getAllCars = (): void => {
     this._carService.GetAll().subscribe(
       (data: Car[]) => {
         this.listOfcars = data;

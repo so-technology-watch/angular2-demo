@@ -17,6 +17,7 @@ export class CarListComponent implements OnInit, OnChanges {
   editing: Boolean = false;
 
   constructor() {
+    // Function to select the car to edit from the table
     this.setCarToEdit = function (index, car: Car) {
       if (this.selectedRow !== index) {
         this.selectedRow = index;
@@ -34,9 +35,11 @@ export class CarListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    this.selectedCar = undefined;
   }
 
   ngOnChanges(...args: any[]) {
+    // if we have a list of car, set loading to false, otherwise show loading animation
     if (this.listOfCars) {
       this.isLoading = false;
     }

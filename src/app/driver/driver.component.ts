@@ -12,20 +12,22 @@ export class DriverComponent implements OnInit {
 
   private listOfDrivers: Driver[];
 
-  // Event tracking properties
+  // Driver list Event tracking ID
   private listId = 'DRIVER_COMPONENT_LIST';
 
   constructor(private _driverService: DriverService) { }
 
   ngOnInit() {
+    // On init get all drivers
     this.getAllDrivers();
 
     // Listen to the 'list'emitted event so as populate the model with the event payload
+    // Refresh driver list
     EmitterService.get(this.listId).subscribe((data: Driver[]) => { this.getAllDrivers(); });
   }
 
-  // Function calling the service carService to get the list of cars
-  getAllDrivers(): void {
+  // Function calling the service driverService to get the list of drivers
+  getAllDrivers = (): void => {
     this._driverService.GetAll().subscribe(
       (data: Driver[]) => {
         this.listOfDrivers = data;

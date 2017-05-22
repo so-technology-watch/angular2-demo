@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
+  // Notification Event tracking ID
   private notificationID = 'MAIN_NOTIFICATION';
 
   // Options for notifications
@@ -33,7 +34,8 @@ export class AppComponent implements OnInit {
       });
   }
 
-  showNotif(notif: AppNotification): void {
+  // Function to show notification depending on the type
+  showNotif = (notif: AppNotification): void => {
     if (notif.type === 'success') {
       this._notificationsService.success(
         notif.title,
