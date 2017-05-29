@@ -26,7 +26,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 * [Angular CLI](https://github.com/angular/angular-cli) :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![version](https://img.shields.io/badge/version-1.0.2-brightgreen.svg)
+![version](https://img.shields.io/badge/version-1.0.3-brightgreen.svg)
 <br>The Angular CLI makes it easy to create an application that already works, right out of the box
 * [Material Design Lite](https://getmdl.io/) :
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
