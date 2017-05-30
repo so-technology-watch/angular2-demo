@@ -7,6 +7,10 @@ body {
   min-height: 100vh;
 }
 
+.loadingApp {
+    margin: 0 auto;
+}
+
 /* Car and driver list card css */
 .material-card-wide.mdl-card {
   width: 70%;
@@ -72,7 +76,7 @@ th, td {
 .material-card-wide > .mdl-card__title {
   color: #d9edf7;
   height: 60px;
-  background-color: #31708f;
+  background-color: #5588ff;
 }
 
 .buttonHolder { 
@@ -101,5 +105,20 @@ th, td {
     margin: auto;
     width: 70%;
 }
+/* /////////////////////////// */
 
+
+/* Form css */
+.mdl-paging {
+    margin: 0 auto;
+}
+
+.mdl-paging a {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.mdl-paging > .selected {
+    font-weight: bold;
+    color: #FF4081;
+}
 /* /////////////////////////// */

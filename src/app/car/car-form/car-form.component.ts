@@ -1,10 +1,9 @@
-import { AppNotification } from './../../model/app-notification.model';
+import { NotificationService } from './../../services/notification.service';
 import { EmitterService } from './../../services/emitter.service';
 import { Car } from './../car.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 import { CarService } from './../services/car.service';
-import { TransferCarDataService } from './../services/transferCarData.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -19,123 +18,105 @@ export class CarFormComponent implements OnInit {
 
   private carInput: Car;
   carForm: FormGroup;
-  notif: AppNotification;
+
+  private id: number;
 
   constructor(
     private _carService: CarService,
-    private _transferCarData: TransferCarDataService,
-    private router: Router,
-    private _fb: FormBuilder) {
+    private _route: ActivatedRoute,
+    private _fb: FormBuilder,
+    private _notificationService: NotificationService) { }
 
-    // Use carDataTransfer service to get car to edit from carManageComponent
-    if (this._transferCarData.getCar()) {
-      this.carInput = this._transferCarData.getCar();
+  ngOnInit() {
+    this.id = +this._route.snapshot.params['id'];
+    this.formInitialize(this.id);
+  }
+
+  /**
+   * Function to initialize form values:
+   * If we have an :id parameter sent to the component, the form
+   * will initialize values with the data of the object we got from
+   * the service carService.getSingle().
+   * Otherwise, we initialize an empty form
+   */
+  formInitialize = (id: number) => {
+    // Initialize form with empty values
+    this.emptyForm();
+
+    // If we have an id, get the car and fill the form with its values
+    if (id) {
+      this._carService.getSingle(id)
+        .subscribe((car: Car) => {
+          this.carInput = car;
+          this.formWithCarDetails(this.carInput);
+        },
+        error => {
+          this._notificationService.error('Car not found', 'Couldn\'t find the car with the given id');
+        });
     }
   }
 
-  ngOnInit() {
-    // Form initialize
-    // If we have a car
-    if (this.carInput) {
-      // Initialize Form with Car details
-      this.carForm = this._fb.group({
-        id: { value: this.carInput.id, disabled: true },
-        maker: [this.carInput.maker, Validators.required],
-        model: [this.carInput.model, Validators.required],
-        year: [this.carInput.year, Validators.compose([Validators.required, Validators.pattern(this.YEAR_REGEX)])],
-        driver: [this.carInput.driver, Validators.required]
-      });
-    } else {
-      // Initialize form with empty values
-      this.carForm = this._fb.group({
-        id: { value: '', disabled: true },
-        maker: ['', Validators.required],
-        model: ['', Validators.required],
-        year: ['', Validators.compose([Validators.required, Validators.pattern(this.YEAR_REGEX)])],
-        driver: ['', Validators.required]
-      });
-    }
+  emptyForm = () => {
+    // Initialize form with empty values
+    this.carForm = this._fb.group({
+      id: { value: '', disabled: true },
+      maker: ['', Validators.required],
+      model: ['', Validators.required],
+      year: ['', Validators.compose([Validators.required, Validators.pattern(this.YEAR_REGEX)])],
+      driver: ['', Validators.required]
+    });
+  }
+
+  formWithCarDetails = (car: Car) => {
+    // Initialize Form with Car details
+    this.carForm = this._fb.group({
+      id: { value: car.id, disabled: true },
+      maker: [car.maker, Validators.required],
+      model: [car.model, Validators.required],
+      year: [car.year, Validators.compose([Validators.required, Validators.pattern(this.YEAR_REGEX)])],
+      driver: [car.driver, Validators.required]
+    });
   }
 
   save = () => {
     if (!this.carInput) {
       // If we didn't get a car, call Add function from car service
-      console.log('Adding new car');
-
-      this._carService.Add(this.carForm.value).subscribe(
-        result => {
-          console.log(result);
-
-          // Notify car list to refresh
-          EmitterService.get('CAR_COMPONENT_LIST').emit(result);
-
-          // reset form values
-          this.resetForm();
-
-          // Navigate back to car list
-          this.router.navigate(['./']);
-
-          // Setting up the notification to send
-          this.notif = {
-            type: 'success',
-            title: 'Success',
-            message: 'Car added successfuly'
-          };
-
-          // Notify app component to show the notification
-          EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
-        },
-        error => console.log(error));
-
-    } else { // Updating the car, call update function from car service
-      console.log('Updating old car \n' + JSON.stringify(<Car>this.carForm.getRawValue()));
-
-      this._carService.Update(Number(this.carInput.id), <Car>this.carForm.getRawValue()).subscribe(
-        result => {
-          console.log(result);
-
-          // Notify driver list to refresh
-          EmitterService.get('CAR_COMPONENT_LIST').emit(result);
-
-          // reset form values
-          this.resetForm();
-
-          // Navigate back to car list
-          this.router.navigate(['./']);
-
-          // Setting up the notification to send
-          this.notif = {
-            type: 'success',
-            title: 'Success',
-            message: 'Car edited successfuly'
-          };
-
-          // Notify app component to show the notification
-          EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
-        },
-        error => {
-          console.log(error);
-
-          // Setting up the notification to send
-          this.notif = {
-            type: 'error',
-            title: 'Error',
-            message: 'An error occured when trying to reach the server'
-          };
-
-          // Notify app component to show the notification
-          EmitterService.get('MAIN_NOTIFICATION').emit(this.notif);
-        });
+      this.add();
+    } else {
+      this.update();
     }
   }
 
- // Function to reset form values and carInput data
+  /**
+   * Call CarService with add (POST) method
+   * TODO:
+   * - if success ? what to do
+   */
+  add = () => {
+    this._carService.add(this.carForm.value).subscribe(
+      result => this._notificationService.success('Success', 'Car added successfuly'),
+      error => {
+        console.error(error);
+        this._notificationService.error('Error', 'An error occured when trying to reach the server');
+      });
+  }
+
+  /**
+   * Call CarService with update (PUT) method
+   * TODO:
+   * - if success ? what to do
+   */
+  update = () => {
+    this._carService.update(+this.carInput.id, <Car>this.carForm.getRawValue()).subscribe(
+      result => this._notificationService.success('Success', 'Car edited successfuly'),
+      error => {
+        console.error(error);
+        this._notificationService.error('Error', 'An error occured when trying to reach the server');
+      });
+  }
+
+  // Function to reset form values and carInput data
   resetForm() {
     this.carForm.reset();
-    if (this.carInput || this._transferCarData.getCar()) {
-      this.carInput = undefined;
-      this._transferCarData.setCar(this.carInput);
-    }
   }
-
 }

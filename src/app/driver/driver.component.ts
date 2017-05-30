@@ -13,7 +13,7 @@ export class DriverComponent implements OnInit {
   private listOfDrivers: Driver[];
 
   // Driver list Event tracking ID
-  private listId = 'DRIVER_COMPONENT_LIST';
+  public readonly listId = 'DRIVER_COMPONENT_LIST';
 
   constructor(private _driverService: DriverService) { }
 
@@ -23,18 +23,13 @@ export class DriverComponent implements OnInit {
 
     // Listen to the 'list'emitted event so as populate the model with the event payload
     // Refresh driver list
-    EmitterService.get(this.listId).subscribe((data: Driver[]) => { this.getAllDrivers(); });
+    EmitterService.get(this.listId).subscribe((data: Driver[]) => this.getAllDrivers());
   }
 
   // Function calling the service driverService to get the list of drivers
   getAllDrivers = (): void => {
-    this._driverService.GetAll().subscribe(
-      (data: Driver[]) => {
-        this.listOfDrivers = data;
-      },
-      error => {
-        console.log(error);
-      },
-      () => console.log(JSON.stringify(this.listOfDrivers)));
+    this._driverService.getAll().subscribe(
+      (data: Driver[]) => this.listOfDrivers = data,
+      error => console.error(error));
   }
 }

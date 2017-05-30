@@ -9,7 +9,9 @@ import { DriverFormComponent } from './driver/driver-form/driver-form.component'
 export const routing = RouterModule.forRoot([
     { path: '', component: CarComponent },
     { path: 'driver', component: DriverComponent },
+    { path: 'car-form/:id', component: CarFormComponent },
     { path: 'car-form', component: CarFormComponent },
+    { path: 'driver-form/:id', component: DriverFormComponent },
     { path: 'driver-form', component: DriverFormComponent },
     { path: '**', component: NotFoundComponent }
 ]);

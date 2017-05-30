@@ -1,10 +1,14 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
+/**
+ * Event service for communication between angular components.
+ */
 @Injectable()
 export class EmitterService {
 
     // Event store
     private static _emitters: { [ID: string]: EventEmitter<any> } = {};
+
     // Set a new event in the store with a given ID
     // as key
     static get(ID: string): EventEmitter<any> {

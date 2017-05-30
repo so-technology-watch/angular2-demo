@@ -1,4 +1,4 @@
-import { AppNotification } from './model/app-notification.model';
+import { NotificationService } from './services/notification.service';
 import { EmitterService } from './services/emitter.service';
 import { NotificationsService } from 'angular2-notifications';
 import { Component, OnInit } from '@angular/core';
@@ -10,11 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
 
-  // Notification Event tracking ID
-  private notificationID = 'MAIN_NOTIFICATION';
+  title: String = 'SO-Angular4-ts';
 
-  // Options for notifications
-  public options = {
+  public navigation = [
+    { title: 'Car', routerLink: '' },
+    { title: 'Driver', routerLink: 'driver' }
+  ];
+
+  public optionsForNotifications = {
     position: ['bottom', 'left'],
     timeOut: 5000,
     lastOnBottom: true,
@@ -24,34 +27,10 @@ export class AppComponent implements OnInit {
     preventDuplicates: true
   };
 
-  constructor(private _notificationsService: NotificationsService) { }
+  constructor(private _notificationService: NotificationService) { }
 
   ngOnInit() {
-    // Listen to the 'notification' emitted event so as populate the model with the event payload
-    EmitterService.get(this.notificationID).subscribe(
-      (notif: AppNotification) => {
-        this.showNotif(notif);
-      });
-  }
-
-  // Function to show notification depending on the type
-  showNotif = (notif: AppNotification): void => {
-    if (notif.type === 'success') {
-      this._notificationsService.success(
-        notif.title,
-        notif.message
-      );
-    } else if (notif.type === 'error') {
-      this._notificationsService.error(
-        notif.title,
-        notif.message
-      );
-    } else {
-      this._notificationsService.warn(
-        'Invalid',
-        'Wrong notification type'
-      );
-    }
+    this._notificationService.init();
   }
 
 }

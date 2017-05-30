@@ -24,18 +24,15 @@ export class CarComponent implements OnInit {
 
     // Listen to the 'list' emitted event so as populate the model with the event payload
     // Refresh car list
-    EmitterService.get(this.listId).subscribe((data: Car[]) => { this.getAllCars(); });
+    EmitterService.get(this.listId).subscribe((data: Car[]) => this.getAllCars());
   }
 
-  // Function calling the service carService to get the list of cars
+  /**
+     * Get all car using the service CarService
+     */
   getAllCars = (): void => {
-    this._carService.GetAll().subscribe(
-      (data: Car[]) => {
-        this.listOfcars = data;
-      },
-      error => {
-        console.log(error);
-      },
-      () => console.log(JSON.stringify(this.listOfcars)));
+    this._carService.getAll().subscribe(
+      (data: Car[]) => this.listOfcars = data,
+      error => console.error(error));
   }
 }

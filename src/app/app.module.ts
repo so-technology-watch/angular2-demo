@@ -14,13 +14,11 @@ import { MDL } from './directives/MDLDirective.directive';
 // Car Components
 import { CarComponent } from './car/car.component';
 import { CarListComponent } from './car/car-list/car-list.component';
-import { CarManageComponent } from './car/car-manage/car-manage.component';
 import { CarFormComponent } from './car/car-form/car-form.component';
 
 // Driver Components
 import { DriverComponent } from './driver/driver.component';
 import { DriverListComponent } from './driver/driver-list/driver-list.component';
-import { DriverManageComponent } from './driver/driver-manage/driver-manage.component';
 import { DriverFormComponent } from './driver/driver-form/driver-form.component';
 
 // Other Components
@@ -36,8 +34,8 @@ import { Configuration } from './app.configuration';
 import { CarService } from './car/services/car.service';
 import { DriverService } from './driver/services/driver.service';
 import { EmitterService } from './services/emitter.service';
-import { TransferCarDataService } from './car/services/transferCarData.service';
-import { TransferDriverDataService } from './driver/services/transferDriverData.service';
+import { NotificationService } from './services/notification.service';
+import { PagerService } from './services/pager.service';
 
 @NgModule({
   declarations: [
@@ -45,11 +43,9 @@ import { TransferDriverDataService } from './driver/services/transferDriverData.
     MDL,
     CarComponent,
     CarListComponent,
-    CarManageComponent,
     CarFormComponent,
     DriverComponent,
     DriverListComponent,
-    DriverManageComponent,
     DriverFormComponent,
     NotFoundComponent
 ],
@@ -68,8 +64,8 @@ import { TransferDriverDataService } from './driver/services/transferDriverData.
     CarService,
     DriverService,
     EmitterService,
-    TransferCarDataService,
-    TransferDriverDataService
+    NotificationService,
+    PagerService
   ],
   bootstrap: [AppComponent]
 })
