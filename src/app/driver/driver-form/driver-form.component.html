@@ -4,45 +4,40 @@
   </div>
   <form [formGroup]="driverForm" novalidate (ngSubmit)="save()">
     <div class="mdl-card__supporting-text add-edit-form">
-      <md-input-container class="form-full-width">
-        <input mdInput placeholder="Id (disabled)" formControlName="id">
-      </md-input-container>
-
-      <table class="form-full-width" cellspacing="0">
-        <tr>
-          <td>
-            <md-input-container class="form-full-width">
-              <input mdInput placeholder="First Name" required formControlName="firstName">
-              <md-error *ngIf="!driverForm.controls.firstName.valid">
-                Driver first name is required
-              </md-error>
-            </md-input-container>
-          </td>
-          <td>
-            <md-input-container class="form-full-width">
-              <input mdInput placeholder="Last Name" required formControlName="lastName">
-              <md-error *ngIf="!driverForm.controls.lastName.valid">
-                Driver last name is required
-              </md-error>
-            </md-input-container>
-          </td>
-        </tr>
-      </table>
-
-      <div style="margin-top:15px"></div>
-
-      <table class="form-full-width" cellspacing="O">
-        <tr>
-          <td>
-            <md-input-container class="form-full-width">
+      <md-grid-list cols="2" rowHeight="70px">
+        <!-- 1st row /-->
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <md-input-container class="form-full-width">
+            <input mdInput placeholder="Id (disabled)" formControlName="id">
+          </md-input-container>
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <md-input-container class="form-full-width">
               <input mdInput placeholder="Car" required formControlName="car">
               <md-error *ngIf="!driverForm.controls.car.valid">
                 Driver car is required
               </md-error>
             </md-input-container>
-          </td>
-        </tr>
-      </table>
+        </md-grid-tile>
+
+        <!-- 2nd row /-->
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <md-input-container class="form-full-width">
+              <input mdInput placeholder="First Name" required formControlName="firstName">
+              <md-error *ngIf="!driverForm.controls.firstName.valid">
+                Driver first name is required
+              </md-error>
+            </md-input-container>
+        </md-grid-tile>
+        <md-grid-tile [colspan]="1" [rowspan]="1">
+          <md-input-container class="form-full-width">
+              <input mdInput placeholder="Last Name" required formControlName="lastName">
+              <md-error *ngIf="!driverForm.controls.lastName.valid">
+                Driver last name is required
+              </md-error>
+            </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
     </div>
     <div class="mdl-card__actions mdl-card--border">
       <div class="buttonHolder">
