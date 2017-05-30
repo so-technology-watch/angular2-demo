@@ -39,15 +39,32 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ## Yet to come
 
-| Task        | Completion      |
-| ------------- |:-------------:| 
-| Initializing new project with angular CLI w/ dependencies      | ![alt text](http://progressed.io/bar/100?title=done) |
-| Creating the structure of the project      | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Creating Car component and list-data component | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Creating manage-component | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Implementing Add/Edit element component | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Architecture schema of the project | ![alt text](http://progressed.io/bar/65?title=hold)      |
-| Implementing Driver API | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Implementing Car & Driver form | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Implementaing centralized notification system | ![alt text](http://progressed.io/bar/100?title=done)      |
-| Code beautify | ![alt text](http://progressed.io/bar/100?title=done)      |
+<table>
+  <tbody>
+    <tr>
+      <th align="center">Tasks</th>
+      <th align="center">Completion</th>
+    </tr>
+    <tr>
+      <td>
+        v0.1.0 (<a href="https://github.com/so-technology-watch/angular2-demo/blob/master/CHANGELOG.md">Changelog</a>)
+      </td>
+      <td align="center">
+        <img src="http://progressed.io/bar/100?title=done" />
+      </td>
+    </tr>
+    <tr>
+      <td>
+      v0.2.0 [Current] :
+        <ul>
+          <li>Create generic classes for each component entity</li>
+          <li>Change form table layout to Material design col layout</li>
+          <li>Change form Add and Reset button after event</li>
+        </ul>
+      </td>
+      <td align="center">
+        <img src="http://progressed.io/bar/20?title=progressing" />
+      </td>
+    </tr>
+  </tbody>
+</table>
