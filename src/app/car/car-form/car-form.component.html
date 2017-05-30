@@ -2,7 +2,7 @@
   <div class="mdl-card__title mdl-card--border">
     <h2 class="mdl-card__title-text">Title </h2>
   </div>
-  <form [formGroup]="carForm" novalidate (ngSubmit)="save()">
+  <form [formGroup]="form" novalidate (ngSubmit)="save()">
     <div class="mdl-card__supporting-text add-edit-form">
       <!-- 1st row /-->
       <md-grid-list cols="2" rowHeight="70px">
@@ -18,7 +18,7 @@
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
               <input mdInput placeholder="Maker" required formControlName="maker">
-              <md-error *ngIf="!carForm.controls.maker.valid">
+              <md-error *ngIf="!form.controls.maker.valid">
                 Car maker is required
               </md-error>
             </md-input-container>
@@ -26,7 +26,7 @@
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
               <input mdInput placeholder="Model" required formControlName="model">
-              <md-error *ngIf="!carForm.controls.model.valid">
+              <md-error *ngIf="!form.controls.model.valid">
                 Car model is required
               </md-error>
             </md-input-container>
@@ -37,10 +37,10 @@
           <md-input-container class="form-full-width">
               <input mdInput #modelYear maxlength="4" placeholder="Model Year" required formControlName="year">
               <md-hint align="end">{{modelYear.value.length}} / 4</md-hint>
-              <md-error *ngIf="carForm.controls.year.hasError('required')">
+              <md-error *ngIf="form.controls.year.hasError('required')">
                 Car model year is required
               </md-error>
-              <md-error *ngIf="carForm.controls.year.hasError('pattern')">
+              <md-error *ngIf="form.controls.year.hasError('pattern')">
                 Not a valid year (Only numbers and 4 digits)
               </md-error>
             </md-input-container>
@@ -48,7 +48,7 @@
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
               <input mdInput placeholder="Driver" required formControlName="driver">
-              <md-error *ngIf="!carForm.controls.driver.valid">
+              <md-error *ngIf="!form.controls.driver.valid">
                 Car driver is required
               </md-error>
             </md-input-container>
@@ -57,10 +57,10 @@
     </div>
     <div class="mdl-card__actions mdl-card--border">
       <div class="buttonHolder">
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" [disabled]="!carForm.valid">
+        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" [disabled]="!form.valid">
         Submit
       </button>
-        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" (click)="resetForm()">
+        <button type="button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" (click)="initForm()">
         Reset
       </button>
       </div>
