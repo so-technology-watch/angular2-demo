@@ -16,9 +16,9 @@ export class CarFormComponent implements OnInit {
   // Regex for model year, only digits and length = 4
   readonly YEAR_REGEX = /^[0-9]{4}$/;
 
+  private title = 'Car Form';
   private car: Car;
   private form: FormGroup;
-
   private id: number;
 
   constructor(

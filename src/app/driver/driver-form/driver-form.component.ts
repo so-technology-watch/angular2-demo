@@ -13,6 +13,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriverFormComponent implements OnInit {
 
+  private title = 'Driver Form';
   private driver: Driver;
   private form: FormGroup;
   private id: number;

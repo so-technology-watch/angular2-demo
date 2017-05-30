@@ -16,6 +16,7 @@ export class DriverListComponent implements OnInit, OnChanges {
   @Input() listOfDrivers: Driver[];
   @Input() listId: string;
 
+  title = 'List of Drivers';
   isLoading: Boolean = true;
   selectedDriver: Driver;
   setDriverToEdit: Function;

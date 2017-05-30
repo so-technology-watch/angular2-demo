@@ -16,6 +16,7 @@ export class CarListComponent implements OnInit, OnChanges {
   @Input() listOfCars: Car[];
   @Input() listId: string;
 
+  title = 'List of Cars';
   isLoading: Boolean = true;
   selectedCar: Car;
   setCarToEdit: Function;
