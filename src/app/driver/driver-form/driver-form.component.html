@@ -8,13 +8,13 @@
         <!-- 1st row /-->
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-            <input mdInput placeholder="Id (disabled)" formControlName="id">
+            <input mdInput placeholder="Id (disabled)" formControlName="driver_id">
           </md-input-container>
         </md-grid-tile>
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-              <input mdInput placeholder="Car" required formControlName="car">
-              <md-error *ngIf="!form.controls.car.valid">
+              <input mdInput placeholder="Car" required formControlName="driver_car">
+              <md-error *ngIf="!form.controls.driver_car.valid">
                 Driver car is required
               </md-error>
             </md-input-container>
@@ -23,16 +23,16 @@
         <!-- 2nd row /-->
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-              <input mdInput placeholder="First Name" required formControlName="firstName">
-              <md-error *ngIf="!form.controls.firstName.valid">
+              <input mdInput placeholder="First Name" required formControlName="driver_firstName">
+              <md-error *ngIf="!form.controls.driver_firstName.valid">
                 Driver first name is required
               </md-error>
             </md-input-container>
         </md-grid-tile>
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-              <input mdInput placeholder="Last Name" required formControlName="lastName">
-              <md-error *ngIf="!form.controls.lastName.valid">
+              <input mdInput placeholder="Last Name" required formControlName="driver_lastName">
+              <md-error *ngIf="!form.controls.driver_lastName.valid">
                 Driver last name is required
               </md-error>
             </md-input-container>

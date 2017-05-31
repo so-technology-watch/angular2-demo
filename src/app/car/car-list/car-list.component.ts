@@ -16,16 +16,16 @@ export class CarListComponent implements OnInit, OnChanges {
   @Input() listOfCars: Car[];
   @Input() listId: string;
 
-  title = 'List of Cars';
-  isLoading: Boolean = true;
-  selectedCar: Car;
-  setCarToEdit: Function;
-  editing: Boolean = false;
+  private title = 'List of Cars';
+  private isLoading: Boolean = true;
+  private selectedCar: Car;
+  private setCarToEdit: Function;
+  private editing: Boolean = false;
 
   // pager object
-  pager: any = {};
+  private pager: any = {};
   // paged items
-  pagedItems: any[];
+  private pagedItems: any[];
 
   constructor(
     private _carService: CarService,
@@ -37,14 +37,11 @@ export class CarListComponent implements OnInit, OnChanges {
     this.setCarToEdit = function (index, car: Car) {
       if (this.selectedRow !== index) {
         this.selectedRow = index;
-        console.log(JSON.stringify(car));
         this.selectedCar = car;
         this.editing = true;
       } else {
         this.selectedRow = undefined;
-        car = undefined;
-        console.log(JSON.stringify(car));
-        this.selectedCar = car;
+        this.selectedCar = undefined;
         this.editing = false;
       }
     };
@@ -66,7 +63,7 @@ export class CarListComponent implements OnInit, OnChanges {
   editCar = (): void => {
     if (this.selectedCar) {
       // Navigate to car form component
-      this.goToCarForm(+this.selectedCar.id);
+      this.goToCarForm(+this.selectedCar.car_id);
     }
   }
 
@@ -76,14 +73,14 @@ export class CarListComponent implements OnInit, OnChanges {
       return;
     } else {
       // Call delete service
-      this._carService.delete(+this.selectedCar.id).subscribe(
+      this._carService.delete(+this.selectedCar.car_id).subscribe(
         result => {
           // Notify driver list to refresh
           EmitterService.get(this.listId).emit(result);
 
           this._notificationService.success(
             'Deleted',
-            `The car entry with the id='${this.selectedCar.id}' was deleted successfuly`);
+            `The car entry with the id='${this.selectedCar.car_id}' was deleted successfuly`);
 
           // resetting data
           this.selectedCar = undefined;

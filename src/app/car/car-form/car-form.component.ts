@@ -49,24 +49,20 @@ export class CarFormComponent implements OnInit {
   getNewForm = (car?: Car) => {
     return {
       id: [{
-        value: (car ? car.id : ''),
+        value: (car ? car.car_id : ''),
         disabled: true
       }],
       maker: [
-        (car ? car.maker : ''),
+        (car ? car.car_maker : ''),
         Validators.required
       ],
       model: [
-        (car ? car.model : ''),
+        (car ? car.car_model : ''),
         Validators.required
       ],
       year: [
-        (car ? car.year : ''),
+        (car ? car.car_year : ''),
         Validators.compose([Validators.required, Validators.pattern(this.YEAR_REGEX)])
-      ],
-      driver: [
-        (car ? car.driver : ''),
-        Validators.required
       ]
     };
   }
@@ -96,7 +92,7 @@ export class CarFormComponent implements OnInit {
   }
 
   update = () => {
-    this._carService.update(+this.car.id, <Car>this.form.getRawValue()).subscribe(
+    this._carService.update(+this.car.car_id, <Car>this.form.getRawValue()).subscribe(
       result => this._notificationService.success('Success', 'Car edited successfuly'),
       error => this._notificationService.error('Error', 'An error occured when trying to reach the server')
     );

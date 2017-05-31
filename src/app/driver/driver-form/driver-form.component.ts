@@ -47,20 +47,20 @@ export class DriverFormComponent implements OnInit {
 
   getNewForm = (driver?: Driver) => {
     return {
-      id: [{
-        value: (driver ? driver.id : ''),
+      driver_id: [{
+        value: (driver ? driver.driver_id : ''),
         disabled: true
       }],
-      firstName: [
-        (driver ? driver.firstName : ''),
+      driver_firstName: [
+        (driver ? driver.driver_firstName : ''),
         Validators.required
       ],
-      lastName: [
-        (driver ? driver.lastName : ''),
+      driver_lastName: [
+        (driver ? driver.driver_lastName : ''),
         Validators.required
       ],
-      car: [
-        (driver ? driver.car : ''),
+      driver_car: [
+        (driver ? driver.driver_car : ''),
         Validators.required
       ]
     };
@@ -94,7 +94,7 @@ export class DriverFormComponent implements OnInit {
   }
 
   update = () => {
-    this._driverService.update(+this.driver.id, <Driver>this.form.getRawValue()).subscribe(
+    this._driverService.update(+this.driver.driver_id, <Driver>this.form.getRawValue()).subscribe(
       result => this._notificationService.success('Success', 'Driver edited successfuly'),
       error => {
         console.error(error);

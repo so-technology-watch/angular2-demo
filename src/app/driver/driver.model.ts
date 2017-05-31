@@ -1,6 +1,6 @@
 export interface Driver {
-    id: string;
-    firstName: string;
-    lastName: string;
-    car: string;
+    driver_id: string;
+    driver_firstName: string;
+    driver_lastName: string;
+    driver_car: string;
 }

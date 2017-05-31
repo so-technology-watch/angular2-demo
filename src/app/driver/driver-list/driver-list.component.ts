@@ -16,16 +16,16 @@ export class DriverListComponent implements OnInit, OnChanges {
   @Input() listOfDrivers: Driver[];
   @Input() listId: string;
 
-  title = 'List of Drivers';
-  isLoading: Boolean = true;
-  selectedDriver: Driver;
-  setDriverToEdit: Function;
-  editing: Boolean = false;
+  private title = 'List of Drivers';
+  private isLoading: Boolean = true;
+  private selectedDriver: Driver;
+  private setDriverToEdit: Function;
+  private editing: Boolean = false;
 
   // pager object
-  pager: any = {};
+  private pager: any = {};
   // paged items
-  pagedItems: any[];
+  private pagedItems: any[];
 
   constructor(
     private _driverService: DriverService,
@@ -62,7 +62,7 @@ export class DriverListComponent implements OnInit, OnChanges {
   editDriver = (): void => {
     if (this.selectedDriver) {
       // Navigate to driver form component
-      this.goToDriverForm(+this.selectedDriver.id);
+      this.goToDriverForm(+this.selectedDriver.driver_id);
     }
   }
 
@@ -72,13 +72,13 @@ export class DriverListComponent implements OnInit, OnChanges {
       return;
     } else {
       // Call delete service
-      this._driverService.delete(+this.selectedDriver.id).subscribe(
+      this._driverService.delete(+this.selectedDriver.driver_id).subscribe(
         result => {
           // Notify driver list to refresh
           EmitterService.get(this.listId).emit(result);
           this._notificationService.success(
             'Driver deleted',
-            `The driver entry with the id='${this.selectedDriver.id}' was deleted successfuly`
+            `The driver entry with the id='${this.selectedDriver.driver_id}' was deleted successfuly`
           );
 
           // resetting data

@@ -14,10 +14,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let driver of pagedItems; let i = index" (click)="setDriverToEdit(i, driver)" [class.active]="i == selectedRow">
-          <th>{{driver.id}}</th>
-          <td>{{driver.firstName}}</td>
-          <td>{{driver.lastName}}</td>
-          <td>{{driver.car}}</td>
+          <th>{{ driver.driver_id }}</th>
+          <td>{{ driver.driver_firstName }}</td>
+          <td>{{ driver.driver_lastName }}</td>
+          <td>{{ driver.driver_car }}</td>
         </tr>
       </tbody>
     </table>

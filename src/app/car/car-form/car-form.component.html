@@ -12,46 +12,34 @@
           </md-input-container>
         </md-grid-tile>
         <md-grid-tile [colspan]="1" [rowspan]="1">
+          <md-input-container class="form-full-width">
+            <input mdInput placeholder="Maker" required formControlName="maker">
+            <md-error *ngIf="!form.controls.maker.valid">
+              Car maker is required
+            </md-error>
+          </md-input-container>
         </md-grid-tile>
 
         <!-- 2nd row /-->
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-              <input mdInput placeholder="Maker" required formControlName="maker">
-              <md-error *ngIf="!form.controls.maker.valid">
-                Car maker is required
-              </md-error>
-            </md-input-container>
+            <input mdInput placeholder="Model" required formControlName="model">
+            <md-error *ngIf="!form.controls.model.valid">
+              Car model is required
+            </md-error>
+          </md-input-container>
         </md-grid-tile>
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-              <input mdInput placeholder="Model" required formControlName="model">
-              <md-error *ngIf="!form.controls.model.valid">
-                Car model is required
-              </md-error>
-            </md-input-container>
-        </md-grid-tile>
-
-        <!-- 3rd row /-->
-        <md-grid-tile [colspan]="1" [rowspan]="1">
-          <md-input-container class="form-full-width">
-              <input mdInput #modelYear maxlength="4" placeholder="Model Year" required formControlName="year">
-              <md-hint align="end">{{modelYear.value.length}} / 4</md-hint>
-              <md-error *ngIf="form.controls.year.hasError('required')">
-                Car model year is required
-              </md-error>
-              <md-error *ngIf="form.controls.year.hasError('pattern')">
-                Not a valid year (Only numbers and 4 digits)
-              </md-error>
-            </md-input-container>
-        </md-grid-tile>
-        <md-grid-tile [colspan]="1" [rowspan]="1">
-          <md-input-container class="form-full-width">
-              <input mdInput placeholder="Driver" required formControlName="driver">
-              <md-error *ngIf="!form.controls.driver.valid">
-                Car driver is required
-              </md-error>
-            </md-input-container>
+            <input mdInput #modelYear maxlength="4" placeholder="Model Year" required formControlName="year">
+            <md-hint align="end">{{modelYear.value.length}} / 4</md-hint>
+            <md-error *ngIf="form.controls.year.hasError('required')">
+              Car model year is required
+            </md-error>
+            <md-error *ngIf="form.controls.year.hasError('pattern')">
+              Not a valid year (Only numbers and 4 digits)
+            </md-error>
+          </md-input-container>
         </md-grid-tile>
       </md-grid-list>
     </div>

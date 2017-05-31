@@ -10,16 +10,14 @@
           <th>Maker</th>
           <th>Model</th>
           <th>Year</th>
-          <th>Driver</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let car of pagedItems; let i = index" (click)="setCarToEdit(i, car)" [class.active]="i == selectedRow">
-          <th>{{car.id}}</th>
-          <td>{{car.maker}}</td>
-          <td>{{car.model}}</td>
-          <td>{{car.year}}</td>
-          <td>{{car.driver}}</td>
+          <th>{{ car.car_id }}</th>
+          <td>{{ car.car_maker }}</td>
+          <td>{{ car.car_model }}</td>
+          <td>{{ car.car_year }}</td>
         </tr>
       </tbody>
     </table>
