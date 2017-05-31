@@ -49,6 +49,10 @@ th, td {
     padding: 8px;
 }
 
+.data-table-format tr {
+    cursor: pointer;
+}
+
 .data-table-format tr.active th {
   background-color:#dfe3ee !important;
 }
@@ -103,7 +107,8 @@ th, td {
 
 .add-edit-form {
     margin: auto;
-    width: 70%;
+    width: 90%;
+    padding: 16px;
 }
 /* /////////////////////////// */
 
@@ -120,5 +125,14 @@ th, td {
 .mdl-paging > .selected {
     font-weight: bold;
     color: #FF4081;
+}
+
+.mat-input-placeholder {
+    font-size: 1em;
+    color: #555555;
+}
+
+.mat-input-underline {
+    border-color: #555555;
 }
 /* /////////////////////////// */
