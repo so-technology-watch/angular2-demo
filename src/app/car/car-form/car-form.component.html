@@ -8,13 +8,13 @@
       <md-grid-list cols="2" rowHeight="70px">
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-            <input mdInput placeholder="Id (disabled)" formControlName="id">
+            <input mdInput placeholder="Id (disabled)" formControlName="car_id">
           </md-input-container>
         </md-grid-tile>
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-            <input mdInput placeholder="Maker" required formControlName="maker">
-            <md-error *ngIf="!form.controls.maker.valid">
+            <input mdInput placeholder="Maker" required formControlName="car_maker">
+            <md-error *ngIf="!form.controls.car_maker.valid">
               Car maker is required
             </md-error>
           </md-input-container>
@@ -23,20 +23,20 @@
         <!-- 2nd row /-->
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-            <input mdInput placeholder="Model" required formControlName="model">
-            <md-error *ngIf="!form.controls.model.valid">
+            <input mdInput placeholder="Model" required formControlName="car_model">
+            <md-error *ngIf="!form.controls.car_model.valid">
               Car model is required
             </md-error>
           </md-input-container>
         </md-grid-tile>
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-            <input mdInput #modelYear maxlength="4" placeholder="Model Year" required formControlName="year">
+            <input mdInput #modelYear maxlength="4" placeholder="Model Year" required formControlName="car_year">
             <md-hint align="end">{{modelYear.value.length}} / 4</md-hint>
-            <md-error *ngIf="form.controls.year.hasError('required')">
+            <md-error *ngIf="form.controls.car_year.hasError('required')">
               Car model year is required
             </md-error>
-            <md-error *ngIf="form.controls.year.hasError('pattern')">
+            <md-error *ngIf="form.controls.car_year.hasError('pattern')">
               Not a valid year (Only numbers and 4 digits)
             </md-error>
           </md-input-container>

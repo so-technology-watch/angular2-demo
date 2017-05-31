@@ -135,4 +135,13 @@ th, td {
 .mat-input-underline {
     border-color: #555555;
 }
+
+.mat-select-placeholder {
+    font-size: 1em;
+    color: #555555;
+}
+
+.mat-select-underline {
+    background-color: #555555;
+}
 /* /////////////////////////// */

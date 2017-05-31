@@ -48,19 +48,19 @@ export class CarFormComponent implements OnInit {
 
   getNewForm = (car?: Car) => {
     return {
-      id: [{
+      car_id: [{
         value: (car ? car.car_id : ''),
         disabled: true
       }],
-      maker: [
+      car_maker: [
         (car ? car.car_maker : ''),
         Validators.required
       ],
-      model: [
+      car_model: [
         (car ? car.car_model : ''),
         Validators.required
       ],
-      year: [
+      car_year: [
         (car ? car.car_year : ''),
         Validators.compose([Validators.required, Validators.pattern(this.YEAR_REGEX)])
       ]

@@ -12,30 +12,29 @@
           </md-input-container>
         </md-grid-tile>
         <md-grid-tile [colspan]="1" [rowspan]="1">
-          <md-input-container class="form-full-width">
-              <input mdInput placeholder="Car" required formControlName="driver_car">
-              <md-error *ngIf="!form.controls.driver_car.valid">
-                Driver car is required
-              </md-error>
-            </md-input-container>
+          <md-select placeholder="Car" formControlName="driver_car" name="car" class="form-full-width">
+            <md-option *ngFor="let car of carsData" [value]="car.car_id">
+              {{ car.car_id }} | {{ car.car_maker }} - {{ car.car_model }} - {{ car.car_year }}
+            </md-option>
+          </md-select>
         </md-grid-tile>
 
         <!-- 2nd row /-->
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-              <input mdInput placeholder="First Name" required formControlName="driver_firstName">
-              <md-error *ngIf="!form.controls.driver_firstName.valid">
-                Driver first name is required
-              </md-error>
-            </md-input-container>
+            <input mdInput placeholder="First Name" required formControlName="driver_firstName">
+            <md-error *ngIf="!form.controls.driver_firstName.valid">
+              Driver first name is required
+            </md-error>
+          </md-input-container>
         </md-grid-tile>
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-input-container class="form-full-width">
-              <input mdInput placeholder="Last Name" required formControlName="driver_lastName">
-              <md-error *ngIf="!form.controls.driver_lastName.valid">
-                Driver last name is required
-              </md-error>
-            </md-input-container>
+            <input mdInput placeholder="Last Name" required formControlName="driver_lastName">
+            <md-error *ngIf="!form.controls.driver_lastName.valid">
+              Driver last name is required
+            </md-error>
+          </md-input-container>
         </md-grid-tile>
       </md-grid-list>
     </div>

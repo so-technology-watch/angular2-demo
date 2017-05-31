@@ -1,3 +1,5 @@
+import { Car } from './../../car/car.model';
+import { CarService } from './../../car/services/car.service';
 import { NotificationService } from './../../services/notification.service';
 import { DriverService } from '../services/driver.service';
 import { EmitterService } from './../../services/emitter.service';
@@ -18,8 +20,13 @@ export class DriverFormComponent implements OnInit {
   private form: FormGroup;
   private id: number;
 
+  // Car Select
+   carsData: Car[];
+  private selectedCarId: number;
+
   constructor(
     private _driverService: DriverService,
+    private _carService: CarService,
     private _route: ActivatedRoute,
     private _router: Router,
     private _formBuilder: FormBuilder,
@@ -28,6 +35,7 @@ export class DriverFormComponent implements OnInit {
   ngOnInit() {
 
     this.getIdFromRouteParams();
+    this.fetchCars();
     this.initForm();
   }
 
@@ -36,6 +44,12 @@ export class DriverFormComponent implements OnInit {
     if (typeof this.id === 'string') {
       this.id = +this.id;
     }
+  }
+
+  fetchCars = () => {
+    this._carService.getAll().subscribe(
+      (data: Car[]) => this.carsData = data,
+      error => console.error(error));
   }
 
   initForm = () => {
