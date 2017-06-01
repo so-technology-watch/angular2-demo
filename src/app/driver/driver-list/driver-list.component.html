@@ -42,6 +42,8 @@
       (click)="setPage(pager.currentPage + 1)">
       <i class="material-icons">keyboard_arrow_right</i>
     </button>
+    <br />
+    <span class="paginationStats">Pages {{ pager.startPage }}-{{ this.pager.endPage }} of {{ pager.totalPages }}</span>
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <div class="buttonHolder">
