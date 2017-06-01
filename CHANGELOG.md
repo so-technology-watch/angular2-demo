@@ -1,6 +1,6 @@
 # Change Log
 
-#### [Current]
+## 0.2.0 [Current]
 
 **Implemented enhancements:**
  * [b83da6b](../../commit/b83da6b) - __(Imad El HItti)__ Change project folder structure and remove useless imports
