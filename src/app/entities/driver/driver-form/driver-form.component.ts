@@ -85,7 +85,7 @@ export class DriverFormComponent implements OnInit {
           this.driver = driver;
           this.form = this._formBuilder.group(this.getNewForm(driver));
         },
-        error => this._notificationService.error('Driver not found', 'Couldn\'t find the driver with the given id'));
+        error => this._notificationService.error(error.message, 'Couldn\'t find the driver with the given id'));
   }
 
   save = () => {

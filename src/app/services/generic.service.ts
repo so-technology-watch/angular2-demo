@@ -49,7 +49,7 @@ export abstract class GenericService<T> {
      */
     public add = (newT: T): Observable<T> => {
         return this._http.post(this.actionUrl + 'create', JSON.stringify(newT), { headers: this.headers })
-            .map((response: Response) => <T>response.json())
+            .map((response: Response) => response.json())
             .catch(this.handleError);
     }
 
@@ -77,6 +77,6 @@ export abstract class GenericService<T> {
     // Function to throw errors
     private handleError(error: Response) {
         console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+        return Observable.throw(error.json());
     }
 }

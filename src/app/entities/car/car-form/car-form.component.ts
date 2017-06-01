@@ -69,11 +69,17 @@ export class CarFormComponent implements OnInit {
 
   load = () => {
     this._carService.getSingle(this.id)
-        .subscribe((car: Car) => {
-          this.car = car;
-          this.form = this._formBuilder.group(this.getNewForm(car));
-        },
-        error => this._notificationService.error('Car not found', 'Couldn\'t find the car with the given id'));
+      .subscribe((car: Car) => {
+        this.car = car;
+        this.form = this._formBuilder.group(this.getNewForm(car));
+      },
+      error => {
+        if (error.message) {
+          this._notificationService.error(error.message, 'Couldn\'t find the car with the given id');
+        } else {
+          this._notificationService.error('Error', 'An error occured when trying to reach the server');
+        }
+      });
   }
 
   save = () => {

@@ -1,4 +1,4 @@
-<div mdl class="material-card-wide mdl-card mdl-shadow--2dp">
+<div class="material-card-wide mdl-card mdl-shadow--2dp">
   <div class="mdl-card__title mdl-card--border">
     <h2 class="mdl-card__title-text">{{ title }}</h2>
   </div>
@@ -21,7 +21,9 @@
         </tr>
       </tbody>
     </table>
-    <div *ngIf="isLoading" id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate loadingCenter"></div>
+    <section *ngIf="isLoading" class="loadingData">
+      <md-progress-bar class="loadingMargin" mode="query"></md-progress-bar>
+    </section>
   </div>
 
   <!-- pager -->

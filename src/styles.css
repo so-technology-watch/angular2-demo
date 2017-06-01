@@ -65,6 +65,13 @@ th, td {
   margin: 15px auto 0;
 }
 
+.loadingData {
+  margin: 0 auto;
+  padding-top: 5%;
+  height: 60px;
+  width: 70%;
+}
+
 /* /////////////////////////// */
 
 

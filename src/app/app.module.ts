@@ -8,9 +8,6 @@ import { AppComponent } from './app.component';
 // Routing
 import { routing } from './app.routing';
 
-// Directives
-import { MDL } from './directives/MDLDirective.directive';
-
 // Car Components
 import { CarComponent } from './entities/car/car.component';
 import { CarListComponent } from './entities/car/car-list/car-list.component';
@@ -40,7 +37,6 @@ import { PagerService } from './services/pager.service';
 @NgModule({
   declarations: [
     AppComponent,
-    MDL,
     CarComponent,
     CarListComponent,
     CarFormComponent,
