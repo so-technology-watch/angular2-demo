@@ -21,7 +21,7 @@ export class DriverFormComponent implements OnInit {
   private id: number;
 
   // Car Select
-   carsData: Car[];
+  private carsData: Car[];
   private selectedCarId: number;
 
   constructor(
@@ -99,8 +99,12 @@ export class DriverFormComponent implements OnInit {
   }
 
   add = () => {
-    this._driverService.add(this.form.value).subscribe(
-      result => this._notificationService.success('Success', 'Driver added successfuly'),
+    this._driverService.add(this.form.value)
+    .subscribe(
+      response => {
+        this._notificationService.success('Success', 'Driver added successfuly');
+        this._router.navigate(['./driver-form', response.driver_id]);
+      },
       error => {
         console.error(error);
         this._notificationService.error('Error', 'An error occured when trying to reach the server');

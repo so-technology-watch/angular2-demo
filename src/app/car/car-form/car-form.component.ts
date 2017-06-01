@@ -2,7 +2,7 @@ import { NotificationService } from './../../services/notification.service';
 import { EmitterService } from './../../services/emitter.service';
 import { Car } from './../car.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CarService } from './../services/car.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -24,6 +24,7 @@ export class CarFormComponent implements OnInit {
   constructor(
     private _carService: CarService,
     private _route: ActivatedRoute,
+    private _router: Router,
     private _formBuilder: FormBuilder,
     private _notificationService: NotificationService) { }
 
@@ -86,7 +87,10 @@ export class CarFormComponent implements OnInit {
 
   add = () => {
     this._carService.add(this.form.value).subscribe(
-      result => this._notificationService.success('Success', 'Car added successfuly'),
+      result => {
+        this._notificationService.success('Success', 'Car added successfuly');
+        this._router.navigate(['./car-form', result.car_id]);
+      },
       error => this._notificationService.error('Error', 'An error occured when trying to reach the server')
     );
   }

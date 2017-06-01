@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { NotificationService } from './services/notification.service';
 import { EmitterService } from './services/emitter.service';
 import { NotificationsService } from 'angular2-notifications';
@@ -17,17 +18,9 @@ export class AppComponent implements OnInit {
     { title: 'Driver', routerLink: 'driver' }
   ];
 
-  public optionsForNotifications = {
-    position: ['bottom', 'left'],
-    timeOut: 5000,
-    lastOnBottom: true,
-    showProgressBar: true,
-    pauseOnHover: true,
-    clickToClose: true,
-    preventDuplicates: true
-  };
-
-  constructor(private _notificationService: NotificationService) { }
+  constructor(
+    private _notificationService: NotificationService,
+    private _router: Router) { }
 
   ngOnInit() {
     this._notificationService.init();

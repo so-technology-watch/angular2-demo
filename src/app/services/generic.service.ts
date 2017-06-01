@@ -1,3 +1,4 @@
+import { resp } from './../resp.model';
 import { Configuration } from './../app.configuration';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
@@ -49,6 +50,7 @@ export abstract class GenericService<T> {
      */
     public add = (newT: T): Observable<T> => {
         return this._http.post(this.actionUrl + 'create', JSON.stringify(newT), { headers: this.headers })
+            .map((response: Response) => <T>response.json())
             .catch(this.handleError);
     }
 
