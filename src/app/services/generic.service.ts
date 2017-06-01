@@ -1,4 +1,3 @@
-import { resp } from './../resp.model';
 import { Configuration } from './../app.configuration';
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';

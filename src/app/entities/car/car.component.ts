@@ -1,7 +1,7 @@
 import { CarService } from './services/car.service';
 import { Car } from './car.model';
 import { Component, OnInit } from '@angular/core';
-import { EmitterService } from '../services/emitter.service';
+import { EmitterService } from '../../services/emitter.service';
 
 @Component({
   selector: 'app-car',

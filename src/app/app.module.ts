@@ -12,14 +12,14 @@ import { routing } from './app.routing';
 import { MDL } from './directives/MDLDirective.directive';
 
 // Car Components
-import { CarComponent } from './car/car.component';
-import { CarListComponent } from './car/car-list/car-list.component';
-import { CarFormComponent } from './car/car-form/car-form.component';
+import { CarComponent } from './entities/car/car.component';
+import { CarListComponent } from './entities/car/car-list/car-list.component';
+import { CarFormComponent } from './entities/car/car-form/car-form.component';
 
 // Driver Components
-import { DriverComponent } from './driver/driver.component';
-import { DriverListComponent } from './driver/driver-list/driver-list.component';
-import { DriverFormComponent } from './driver/driver-form/driver-form.component';
+import { DriverComponent } from './entities/driver/driver.component';
+import { DriverListComponent } from './entities/driver/driver-list/driver-list.component';
+import { DriverFormComponent } from './entities/driver/driver-form/driver-form.component';
 
 // Other Components
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -31,8 +31,8 @@ import { MaterialModule } from '@angular/material';
 
 // Services
 import { Configuration } from './app.configuration';
-import { CarService } from './car/services/car.service';
-import { DriverService } from './driver/services/driver.service';
+import { CarService } from './entities/car/services/car.service';
+import { DriverService } from './entities/driver/services/driver.service';
 import { EmitterService } from './services/emitter.service';
 import { NotificationService } from './services/notification.service';
 import { PagerService } from './services/pager.service';

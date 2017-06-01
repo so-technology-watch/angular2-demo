@@ -1,8 +1,8 @@
-import { GenericService } from './../../services/generic.service';
+import { GenericService } from './../../../services/generic.service';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Car } from '../car.model';
-import { Configuration } from '../../app.configuration';
+import { Configuration } from '../../../app.configuration';
 
 @Injectable()
 export class CarService extends GenericService<Car>  {

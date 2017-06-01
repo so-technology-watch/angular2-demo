@@ -1,8 +1,8 @@
 import { Driver } from './../driver.model';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { GenericService } from './../../services/generic.service';
-import { Configuration } from '../../app.configuration';
+import { GenericService } from './../../../services/generic.service';
+import { Configuration } from '../../../app.configuration';
 
 @Injectable()
 export class DriverService extends GenericService<Driver> {
