@@ -3,7 +3,9 @@
 #### [Current]
 
 **Implemented enhancements:**
-
+ * [b83da6b](../../commit/b83da6b) - __(Imad El HItti)__ Change project folder structure and remove useless imports
+ * [8f30c9e](../../commit/8f30c9e) - __(Imad El HItti)__ Adding pages stats and total pages
+ * [e12bc21](../../commit/e12bc21) - __(Imad El HItti)__ Changelog and Readme updated
  * [8236c14](../../commit/8236c14) - __(Imad El HItti)__ Factorize entities form components and modify rest button utility
     - Reset button will now reset form to empty value if we are in add mode, or it will reset to the original value of the edited entity if we are in edit mode
  * [c64473e](../../commit/c64473e) - __(Imad El HItti)__ Change table to material design layout in form components
@@ -20,7 +22,9 @@
 
 **Fixed bugs:**
 
-* [73c02df](../../commit/73c02df) - __(Imad El HItti)__ Fix entities form and replaced Car input to select in Driver Form
+ * [4937d5f](../../commit/4937d5f) - __(Imad El HItti)__ Fix after adding an entity event
+    - After adding an entity, the form will be loaded into edit mode with this new entity values. So we will be able to directly edit the added entity
+ * [73c02df](../../commit/73c02df) - __(Imad El HItti)__ Fix entities form and replaced Car input to select in Driver Form
     - In driver form, the car list will be fetched from an API call and the user will be able to select an available car instead of entering the id manually
  * [bd3827e](../../commit/bd3827e) - __(Imad El HItti)__ Fix entities model based on serve api model
  * [ff26226](../../commit/ff26226) - __(Imad El HItti)__ Fix some CSS

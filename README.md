@@ -63,7 +63,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
         </ul>
       </td>
       <td align="center">
-        <img src="http://progressed.io/bar/75?title=progressing" />
+        <img src="http://progressed.io/bar/100?title=progressing" />
       </td>
     </tr>
   </tbody>
