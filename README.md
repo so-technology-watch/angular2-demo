@@ -57,13 +57,13 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
       <td>
       v0.2.0 [Current] :
         <ul>
-          <li>Create generic classes for each component entity</li>
           <li>Change form table layout to Material design col layout</li>
           <li>Change form Add and Reset button after event</li>
+          <li>Many fixes, view <a href="https://github.com/so-technology-watch/angular2-demo/blob/master/CHANGELOG.md">Changelog</a> for more info</li>
         </ul>
       </td>
       <td align="center">
-        <img src="http://progressed.io/bar/20?title=progressing" />
+        <img src="http://progressed.io/bar/75?title=progressing" />
       </td>
     </tr>
   </tbody>
