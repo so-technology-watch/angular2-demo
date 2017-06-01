@@ -36,6 +36,10 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 &nbsp;&nbsp;&nbsp;
 ![version](https://img.shields.io/badge/version-0.7.3-brightgreen.svg)
  <br/> A light and easy to use notifications library for Angular 2. It features both regular page notifications (toasts) and push notifications.
+ * [Underscorejs](http://http://underscorejs.org/) :
+&nbsp;&nbsp;&nbsp;
+![version](https://img.shields.io/badge/version-1.8.3-brightgreen.svg)
+ <br/> Underscore is a JavaScript library that provides a whole mess of useful functional programming helpers without extending any built-in objects.
 
 ## Yet to come
 
@@ -63,7 +67,7 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
         </ul>
       </td>
       <td align="center">
-        <img src="http://progressed.io/bar/100?title=progressing" />
+        <img src="http://progressed.io/bar/100?title=done" />
       </td>
     </tr>
   </tbody>
