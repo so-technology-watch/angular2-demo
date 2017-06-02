@@ -18,9 +18,6 @@ export class DriverListComponent implements OnInit, OnChanges {
 
   private title = 'List of Drivers';
   private isLoading: Boolean = true;
-  private selectedDriver: Driver;
-  private setDriverToEdit: Function;
-  private editing: Boolean = false;
 
   // pager object
   private pager: any = {};
@@ -31,21 +28,7 @@ export class DriverListComponent implements OnInit, OnChanges {
     private _driverService: DriverService,
     private _router: Router,
     private _notificationService: NotificationService,
-    private pagerService: PagerService) {
-
-    // Function to select the driver to edit from the table
-    this.setDriverToEdit = function (index, driver: Driver) {
-      if (this.selectedRow !== index) {
-        this.selectedRow = index;
-        this.selectedDriver = driver;
-        this.editing = true;
-      } else {
-        this.selectedRow = undefined;
-        this.selectedDriver = undefined;
-        this.editing = false;
-      }
-    };
-  }
+    private pagerService: PagerService) { }
 
   ngOnInit() { }
 
@@ -53,37 +36,28 @@ export class DriverListComponent implements OnInit, OnChanges {
     // if we have a list of driver, set loading to false, otherwise show loading animation
     if (this.listOfDrivers) {
       this.isLoading = false;
-
       // initialize to page 1
       this.setPage(1);
     }
   }
 
-  editDriver = (): void => {
-    if (this.selectedDriver) {
+  editDriver = (driver: Driver): void => {
+    if (driver) {
       // Navigate to driver form component
-      this.goToDriverForm(+this.selectedDriver.driver_id);
+      this.goToDriverForm(+driver.driver_id);
     }
   }
 
-  deleteDriver = (): void => {
-    if (!this.selectedDriver) {
-      this._notificationService.error('Driver not selected', 'You have to select a driver to delete');
-      return;
-    } else {
+  deleteDriver = (driverID): void => {
       // Call delete service
-      this._driverService.delete(+this.selectedDriver.driver_id).subscribe(
+      this._driverService.delete(+driverID).subscribe(
         result => {
           // Notify driver list to refresh
           EmitterService.get(this.listId).emit(result);
           this._notificationService.success(
             'Driver deleted',
-            `The driver entry with the id='${this.selectedDriver.driver_id}' was deleted successfuly`
+            `The driver entry with the id='${driverID}' was deleted successfuly`
           );
-
-          // resetting data
-          this.selectedDriver = undefined;
-          this.editing = false;
         },
         error => {
           console.error(error);
@@ -91,7 +65,6 @@ export class DriverListComponent implements OnInit, OnChanges {
             'Error',
             'An error occured when trying to reach the server');
         });
-    }
   }
 
   goToDriverForm(id: number) {

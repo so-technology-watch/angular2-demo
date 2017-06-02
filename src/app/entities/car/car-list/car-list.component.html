@@ -10,14 +10,18 @@
           <th>Maker</th>
           <th>Model</th>
           <th>Year</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let car of pagedItems; let i = index" (click)="setCarToEdit(i, car)" [class.active]="i == selectedRow">
+        <tr *ngFor="let car of pagedItems" (click)="editCar(car)">
           <th>{{ car.car_id }}</th>
           <td>{{ car.car_maker }}</td>
           <td>{{ car.car_model }}</td>
           <td>{{ car.car_year }}</td>
+          <td width="5%" (click)="deleteCar(car.car_id); $event.stopPropagation();">
+            <i class="material-icons delete-data-icon">delete_forever</i>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -49,17 +53,9 @@
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <div class="buttonHolder">
-      <div>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" (click)="editCar()" *ngIf="editing">
-          Edit
-        </button>
-        <button routerLink="car-form" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" *ngIf="!editing">
-          Add
-        </button>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" (click)="deleteCar()">
-          Delete
-        </button>
-      </div>
+      <button routerLink="car-form" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" *ngIf="!editing">
+        Add
+      </button>
     </div>
   </div>
 </div>

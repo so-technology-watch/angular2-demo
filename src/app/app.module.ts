@@ -20,6 +20,7 @@ import { DriverFormComponent } from './entities/driver/driver-form/driver-form.c
 
 // Other Components
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AboutComponent } from './about/about.component';
 
 // Modules
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -43,7 +44,8 @@ import { PagerService } from './services/pager.service';
     DriverComponent,
     DriverListComponent,
     DriverFormComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AboutComponent
 ],
   imports: [
     BrowserModule,

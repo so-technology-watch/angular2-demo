@@ -18,9 +18,6 @@ export class CarListComponent implements OnInit, OnChanges {
 
   private title = 'List of Cars';
   private isLoading: Boolean = true;
-  private selectedCar: Car;
-  private setCarToEdit: Function;
-  private editing: Boolean = false;
 
   // pager object
   private pager: any = {};
@@ -31,25 +28,9 @@ export class CarListComponent implements OnInit, OnChanges {
     private _carService: CarService,
     private _router: Router,
     private _notificationService: NotificationService,
-    private pagerService: PagerService) {
+    private pagerService: PagerService) { }
 
-    // Function to select the car to edit from the table
-    this.setCarToEdit = function (index, car: Car) {
-      if (this.selectedRow !== index) {
-        this.selectedRow = index;
-        this.selectedCar = car;
-        this.editing = true;
-      } else {
-        this.selectedRow = undefined;
-        this.selectedCar = undefined;
-        this.editing = false;
-      }
-    };
-  }
-
-  ngOnInit() {
-    this.selectedCar = undefined;
-  }
+  ngOnInit() { }
 
   ngOnChanges(...args: any[]) {
     // if we have a list of car, set loading to false, otherwise show loading animation
@@ -60,39 +41,30 @@ export class CarListComponent implements OnInit, OnChanges {
     }
   }
 
-  editCar = (): void => {
-    if (this.selectedCar) {
+  editCar = (car: Car): void => {
+    if (car) {
       // Navigate to car form component
-      this.goToCarForm(+this.selectedCar.car_id);
+      this.goToCarForm(+car.car_id);
     }
   }
 
-  deleteCar = (): void => {
-    if (!this.selectedCar) {
-      this._notificationService.error('Car not selected', 'You have to select a car to delete');
-      return;
-    } else {
-      // Call delete service
-      this._carService.delete(+this.selectedCar.car_id).subscribe(
-        result => {
-          // Notify driver list to refresh
-          EmitterService.get(this.listId).emit(result);
+  deleteCar = (carID): void => {
+    // Call delete service
+    this._carService.delete(+carID).subscribe(
+      result => {
+        // Notify driver list to refresh
+        EmitterService.get(this.listId).emit(result);
 
-          this._notificationService.success(
-            'Deleted',
-            `The car entry with the id='${this.selectedCar.car_id}' was deleted successfuly`);
-
-          // resetting data
-          this.selectedCar = undefined;
-          this.editing = false;
-        },
-        error => {
-          console.error(error);
-          this._notificationService.error(
-            'Error',
-            'An error occured when trying to reach the server');
-        });
-    }
+        this._notificationService.success(
+          'Deleted',
+          `The car entry with the id='${carID}' was deleted successfuly`);
+      },
+      error => {
+        console.error(error);
+        this._notificationService.error(
+          'Error',
+          'An error occured when trying to reach the server');
+      });
   }
 
   goToCarForm(id: number) {

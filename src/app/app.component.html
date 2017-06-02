@@ -7,10 +7,18 @@
       <div class="mdl-layout-spacer"></div>
       <!-- Navigation. We hide it in small screens. -->
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a *ngFor="let nav of navigation" routerLink="{{nav.routerLink}}" class="mdl-navigation__link" href="">{{nav.title}}</a>
+        <a routerLink="about" class="mdl-navigation__link" href="">About</a>
       </nav>
     </div>
   </header>
+
+  <!-- Drawer -->
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Entities</span>
+    <nav class="mdl-navigation">
+      <a *ngFor="let nav of navigation" routerLink="{{nav.routerLink}}" class="mdl-navigation__link" href="">{{nav.title}}</a>
+    </nav>
+  </div>
 
   <main class="mdl-layout__content">
     <div class="page-content">

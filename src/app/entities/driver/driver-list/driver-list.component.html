@@ -10,14 +10,18 @@
           <th>First Name</th>
           <th>Last Name</th>
           <th>Car</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let driver of pagedItems; let i = index" (click)="setDriverToEdit(i, driver)" [class.active]="i == selectedRow">
+        <tr *ngFor="let driver of pagedItems" (click)="editDriver(driver)">
           <th>{{ driver.driver_id }}</th>
           <td>{{ driver.driver_firstName }}</td>
           <td>{{ driver.driver_lastName }}</td>
           <td>{{ driver.driver_car }}</td>
+          <td width="5%" (click)="deleteDriver(driver.driver_id); $event.stopPropagation();">
+            <i class="material-icons delete-data-icon">delete_forever</i>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -28,19 +32,14 @@
 
   <!-- pager -->
   <div class="mdl-paging" *ngIf="pager.pages && pager.pages.length">
-    <button [disabled]="pager.currentPage === 1"
-      class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-      (click)="setPage(pager.currentPage - 1)">
+    <button [disabled]="pager.currentPage === 1" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" (click)="setPage(pager.currentPage - 1)">
       <i class="material-icons">keyboard_arrow_left</i>
     </button>
-    <a *ngFor="let page of pager.pages" 
-      [class.selected]="pager.currentPage === page"
-      class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+    <a *ngFor="let page of pager.pages" [class.selected]="pager.currentPage === page" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
       (click)="setPage(page)">
       {{ page }}
     </a>
-    <button [disabled]="pager.currentPage === pager.totalPages" 
-      class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+    <button [disabled]="pager.currentPage === pager.totalPages" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
       (click)="setPage(pager.currentPage + 1)">
       <i class="material-icons">keyboard_arrow_right</i>
     </button>
@@ -49,17 +48,9 @@
   </div>
   <div class="mdl-card__actions mdl-card--border">
     <div class="buttonHolder">
-      <div>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" (click)="editDriver()" *ngIf="editing">
-          Edit
-        </button>
-        <button routerLink="../driver-form" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" *ngIf="!editing">
+      <button routerLink="../driver-form" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" *ngIf="!editing">
           Add
         </button>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent" (click)="deleteDriver()">
-          Delete
-        </button>
-      </div>
     </div>
   </div>
 </div>
