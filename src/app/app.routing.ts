@@ -8,7 +8,12 @@ import { DriverFormComponent } from './entities/driver/driver-form/driver-form.c
 import { AboutComponent } from './about/about.component';
 
 export const routing = RouterModule.forRoot([
-    { path: '', component: CarComponent },
+    {
+        path: '',
+        redirectTo: '/car',
+        pathMatch: 'full'
+    },
+    { path: 'car', component: CarComponent },
     { path: 'driver', component: DriverComponent },
     { path: 'car-form/:id', component: CarFormComponent },
     { path: 'car-form', component: CarFormComponent },
