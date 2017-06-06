@@ -13,6 +13,9 @@
         </md-grid-tile>
         <md-grid-tile [colspan]="1" [rowspan]="1">
           <md-select placeholder="Car" formControlName="driver_car" name="car" class="form-full-width">
+            <md-option [value]="">
+              N/A
+            </md-option>
             <md-option *ngFor="let car of carsData" [value]="car.car_id">
               {{ car.car_id }} | {{ car.car_maker }} - {{ car.car_model }} - {{ car.car_year }}
             </md-option>

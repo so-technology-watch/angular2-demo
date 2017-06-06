@@ -73,8 +73,7 @@ export class DriverFormComponent implements OnInit {
         Validators.required
       ],
       driver_car: [
-        (driver ? driver.driver_car : ''),
-        Validators.required
+        (driver ? driver.driver_car : '')
       ]
     };
   }
